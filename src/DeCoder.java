@@ -46,9 +46,6 @@ public class DeCoder {
             arrDecRand[i] = arrCods[i].substring(0, 2);
             decodMass.append((char) (Integer.parseInt(arrDec[i]) / Integer.parseInt(arrDecRand[i])));
         }
-
-
-
         return decodMass.append("\n").append(dateStr);
     }
 }
