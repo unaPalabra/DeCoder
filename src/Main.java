@@ -1,8 +1,10 @@
 public class Main {
     public static void main(String[] args) {
-        DeCoder encryption = new DeCoder("Разве укусит змея, не прошипев?");
+        DeCoder encryption = new DeCoder();
+        StringBuilder message1 = encryption.encoder("Разве укусит змея, не прошипев?");
+        StringBuilder message2 = encryption.encoder("Hello, world!");
 
-        encryption.encoder();                            // encoder massage with date
-        System.out.println(encryption.decoder());       // decoding massage with date
+        System.out.println(encryption.decoder(message1));
+        System.out.println(encryption.decoder(message2));
     }
 }
