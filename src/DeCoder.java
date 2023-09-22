@@ -1,11 +1,12 @@
 import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 
 public class DeCoder {
     private String getDate() {
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy MMM dd HH:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy MM dd HH:mm:ss");
         return dateFormat.format(calendar.getTime());
     }
 
@@ -15,7 +16,7 @@ public class DeCoder {
         int[] arrRand = new int[arrMass.length];
 
         SecureRandom random = new SecureRandom();
-        int rand = random.nextInt(10, 88);
+        int rand = random.nextInt(10, 80);
         StringBuilder codMassage = new StringBuilder();
 
         for (int i = 0; i < arrMass.length; i++) {
@@ -23,13 +24,19 @@ public class DeCoder {
             arrRand[i] = rand;
             codMassage.append(arrRand[i]).append(nums[i] + " ").trimToSize();
         }
+        System.out.println(codMassage.append(getDate()));
         return codMassage.append(getDate());   // return string encoded message with date
     }
 
     public StringBuilder decoder(StringBuilder message) {
         StringBuilder dateStr = new StringBuilder(message);
-        dateStr.delete(0, message.length() - 21);
-        String[] arrCods = message.delete(message.length() - 21, message.length()).toString().split(" ");
+        dateStr.delete(0, message.length() - 19);
+
+        System.out.println(message);
+
+        String[] arrCods = message.delete(message.length() - 19, message.length()).toString().split(" ");
+
+//        System.out.println(dateStr);
 
         String[] arrDec = new String[arrCods.length];
         String[] arrDecRand = new String[arrCods.length];
